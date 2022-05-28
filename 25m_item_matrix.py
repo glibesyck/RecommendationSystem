@@ -1,3 +1,6 @@
+"""
+Module which implements the search of the values of latent factors for big dataset - 25M MovieLens
+"""
 from surprise import Dataset
 from surprise import Reader
 from surprise import SVD
