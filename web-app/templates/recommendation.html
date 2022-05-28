@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation</title>
+</head>
+
+<body>
+    <div class="bg-image"></div>
+    <h1>Your fit is:</h1>
+    {% for i in content %}
+        <p>{{ i[0] }}</p> <br>
+        <img src={{i[1]}}>
+    {% endfor %}
+    
+</body>
+
+</html>
