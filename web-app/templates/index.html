@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        #main-content {
+            background-color: rgba(255, 255, 48, 0.856);
+            /* Black w/opacity/see-through */
+            border-radius: 30px;
+            font-weight: bold;
+            border: 3px solid #f1f1f1;
+            position: absolute;
+            top: 150px;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            z-index: 2;
+            width: 70%;
+            padding: 20px;
+            text-align: center;
+            color:black;
+            font-size: medium;
+        }
+        /* header{
+            position: absolute;
+            top:0%;
+            right: 0%;
+            padding: 30px;
+        } */
+
+        button{
+            border-radius: 10px;
+            padding: 5px;
+            background-color: rgba(49, 204, 196, 0.856);
+            font-size: 25px;
+            margin-left: 20px;
+            width: 140px;
+            color:  white;
+            border: 1px solid rgba(49, 204, 196, 0.856);
+            cursor: pointer;
+        }
+        button:hover{
+            border:1px solid rgb(0, 0, 0);
+        }
+        .bg-image {
+            /* The image used */
+            background-image: url("../static/background.png");
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        p{
+            margin-top: 10px;
+            color:black;
+            font-size: medium;
+            margin-bottom: 50px;
+        }
+
+        input[type=text] {
+            position: absolute;
+            display: block;
+            text-align: center;
+            border-radius: 30px;
+            padding: 5px;
+            align-content: center;
+            font-size: 34px;
+            font-family: inherit;
+            background-color: white;
+            color: black;
+            width: 450px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            outline: none;
+            border: none;
+        }
+        
+
+        input[type=text]:focus {
+            background-color: rgb(237, 245, 248);
+        }
+        input[type=submit]{
+            margin-top: 40px;
+            font-size: 34px;
+            font-family: inherit;
+            background-color: white;
+            border: none;
+            width: 330px;
+            border-radius: 30px;
+            cursor:pointer;
+        }
+        input[type=submit]:hover{
+            width: 340px;
+        }
+
+        h1{
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            font-size: 40px;
+            color:rgb(237, 245, 248);
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="bg-image"></div>
+    <h1>Find a perfect movie-fit for you</h1>
+    <div id='main-content'>
+        <p>Enter 10 films and grades (in range 0-5 with step 0.5)</p>
+        <form action="/" method="post">
+            <input name="movie" placeholder="Film that you want to grade" type="text">
+            <input name="grade" type="number" value="0" min="0" max="5" step="0.5">
+            <input type="submit" value="Add this film">
+        </form>
+        {% for i in content %}
+            <p>{{ i }}</p> <br>
+        {% endfor %}
+        
+        {% if button_av%}
+        <form action="/recommendation" method="post">
+            <input type="submit" value="get my recomendations">
+        </form>
+        {% endif %}
+    </div>
+</body>
+
+</html>

@@ -53,12 +53,14 @@ def search_wgrid (data, epochs:list, lr:list, reg:list, factors:list, biased:lis
     print(gs.best_params['rmse'])
     return gs
 
+
 def scipy_svd(ratings, k):
     
     Ratings = ratings.pivot(index = 'userId', columns ='movieId', values = 'rating').fillna(0)
     Rr = Ratings.values
 
     U, sigma, Vt = svds(Rr, k)
+
     sigma = np.diag(sigma)
     all_user_predicted_ratings = np.dot(np.dot(U, sigma), Vt)
     preds = pd.DataFrame(all_user_predicted_ratings, columns = Ratings.columns)
@@ -92,12 +94,13 @@ if __name__ == "__main__":
     data = Dataset.load_builtin('ml-100k')
     ratings = pd.read_csv('ratings_100k.csv')
 
-    #General Info about Dataset
+    #General Info
     print(len(ratings))
     n_users = ratings.userId.unique().shape[0]
     n_movies = ratings.movieId.unique().shape[0]
     print('Number of users = ' + str(n_users) + ' | Number of movies = ' + str(n_movies))
     sparsity = round(1.0 - len(ratings) / float(n_users * n_movies), 3)
+
     print('The sparsity level of MovieLens25M dataset is ' +  str(sparsity * 100) + '%')
     
     #Prediction with Surprise (with basic parameters, 2 options - with bias and without)
@@ -112,3 +115,4 @@ if __name__ == "__main__":
     #Scipy SVD for k = 10 results and RMSE 
     preds, rmse = scipy_svd(ratings, 10)
     print(rmse)
+
