@@ -58,15 +58,7 @@ def scipy_svd(ratings):
     preds = pd.DataFrame(all_user_predicted_ratings, columns = Ratings.columns)
 
     print(preds.head())
-
-    reader = Reader()
-
-    # Load ratings dataset with Dataset library
-    data = Dataset.load_from_df(ratings[['userId', 'movieId', 'rating']], reader)
-
-
-    # Compute the RMSE of the SVD algorithm.
-    algo = SVD()
+    return U, sigma, Vt
 
 if __name__ == "__main__":
     data = Dataset.load_builtin('ml-100k')

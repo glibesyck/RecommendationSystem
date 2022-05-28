@@ -32,7 +32,5 @@ for rating in all_ratings:
     if right == 5:
         break
 df_films = pd.read_csv('ml-25m/movies.csv')
-for _, row in df_films.iterrows():
-    if row['innerId'] in recommendations:
-        rec.append((row['title'], int(row['tmdbId'])))
-print(rec)
+print(df_films[df_films['innerId'].isin(recommendations)])
+
