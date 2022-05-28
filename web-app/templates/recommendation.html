@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Recommendation</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Press Start 2P", "sans-serif";
+      }
+      body {
+        color: #ccc;
+        background: #222;
+      }
+      h1 {
+        font-size: 40px;
+        width: 100%;
+        text-align: center;
+        margin: 20px 0;
+      }
+      .container {
+        display: flex;
+      }
+      .film {
+        color: #ccc;
+        width: 25%;
+        margin: 0;
+        align-items: center;
+        text-align: center;
+        display: inline-block;
+        margin: 20px;
+      }
+      img {
+        max-height: 300px;
+        height: 70%;
+        width: auto;
+        display: inline-block;
+      }
+      p {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Your Top-5!</h1>
+    {% for i in content %}
+    <div class="film">
+      <img src="{{i[1]}}" />
+      <br />
+      <p>{{ i[0] }}</p>
+    </div>
+    {% endfor %}
+  </body>
+</html>
